@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C/C++ Runner: Debug Session",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [],
+            "stopAtEntry": true,
+            "externalConsole": false,
+            "cwd": "/Users/diegopartida/Desktop/Programming of Data Structures and Fundamental Algorithms/BinaryTree",
+            "program": "/Users/diegopartida/Desktop/Programming of Data Structures and Fundamental Algorithms/BinaryTree/build/Debug/outDebug",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb"
+        },
+        {
+            "name": "C/C++: clang++ Compilar y depurar el archivo activo",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: clang++ compilar archivo activo"
+        }
+    ]
+}
