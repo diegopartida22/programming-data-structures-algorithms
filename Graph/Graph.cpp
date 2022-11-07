@@ -4,6 +4,9 @@
 
 using namespace std;
 
+// Author: Diego Partida Romero A01641113
+// Date: 7/11/2022
+
 class Graph
 {
 private:
@@ -28,8 +31,6 @@ public:
     void addEdge(int, int);
     void printGraph();
     void ResetVisited();
-
-    // new function load the arcs from the graph and store them in a adjancy matrix and a adjancy list
     void loadGraph();
 
     void DFS(int);
@@ -39,7 +40,6 @@ public:
 void Graph::addEdge(int s, int d)
 {
     this->adjLists[s].push_back(d);
-    this->adjLists[d].push_back(s);
 }
 
 void Graph::printGraph()
@@ -66,7 +66,7 @@ void Graph::DFS(int vertex)
     this->visited[vertex] = true;
     list<int> adjVertex = this->adjLists[vertex];
 
-    cout << vertex << " ";
+    cout << vertex << "  ";
 
     for (auto i : adjVertex)
         if (!this->visited[i])
@@ -98,50 +98,73 @@ void Graph::BFS(int startVertex)
     }
 }
 
-// Load graph function input
+// Print adjency matrix and adjency list
 void Graph::loadGraph()
 {
-    int numArcs;
-    int source, destination;
+    int adjMatrix[this->numVertices][this->numVertices];
 
-    cout << "Enter the number of arcs: ";
-    cin >> numArcs;
+    for (int i = 0; i < this->numVertices; i++)
+        for (int j = 0; j < this->numVertices; j++)
+            adjMatrix[i][j] = 0;
 
-    for (int i = 0; i < numArcs; i++)
+    for (int i = 0; i < this->numVertices; i++)
     {
-        cout << "Enter the source and destination of the arc: ";
-        cin >> source >> destination;
-        addEdge(source, destination);
+        for (int x : this->adjLists[i])
+            adjMatrix[i][x] = 1;
+    }
 
-        cout << "The graph is loaded" << endl;
+    cout << "\nAdjency List: " << endl;
+    for (int i = 0; i < this->numVertices; i++)
+    {
+        cout << i << " -> ";
+        for (auto x : this->adjLists[i])
+            cout << x << " ";
+        cout << endl;
+    }
 
-        printGraph();
+    cout << "\nAdjency Matrix: " << endl;
+    for (int i = 0; i < this->numVertices; i++)
+    {
+        for (int j = 0; j < this->numVertices; j++)
+            cout << adjMatrix[i][j] << " ";
+        cout << endl;
     }
 }
 
 int main()
 {
-    Graph g(6);
+    cout << "Author: Diego Partida Romero A01641113\nDate: 7/11/22" << endl;
+
+    Graph g(7);
     g.addEdge(0, 1);
     g.addEdge(0, 2);
     g.addEdge(0, 3);
+    g.addEdge(0, 4);
     g.addEdge(1, 2);
-    g.addEdge(2, 4);
+    g.addEdge(1, 3);
+    g.addEdge(2, 0);
+    g.addEdge(2, 3);
+    g.addEdge(3, 1);
+    g.addEdge(3, 3);
+    g.addEdge(3, 4);
+    g.addEdge(4, 4);
+    g.addEdge(4, 5);
+    g.addEdge(5, 6);
+    g.addEdge(6, 1);
+    g.addEdge(6, 3);
+    g.addEdge(6, 5);
+    g.addEdge(6, 6);
 
-    g.printGraph();
     g.loadGraph();
 
     cout << "\nDFS: ";
     g.DFS(1);
 
-    Graph g2(5);
-    g2.addEdge(0, 1);
-    g2.addEdge(0, 2);
-    g2.addEdge(0, 3);
-    g2.addEdge(1, 2);
-    g2.addEdge(2, 4);
-    cout << "\nBFS: ";
-    g2.BFS(0);
+    g.ResetVisited();
+
+    cout << "\n\nBFS: ";
+    g.BFS(0);
+    cout << endl;
 
     return 0;
 }
