@@ -117,30 +117,31 @@ void Graph::loadGraph()
 
         printGraph();
     }
+}
 
-    int main()
-    {
-        Graph g(6);
-        g.addEdge(0, 1);
-        g.addEdge(0, 2);
-        g.addEdge(0, 3);
-        g.addEdge(1, 2);
-        g.addEdge(2, 4);
+int main()
+{
+    Graph g(6);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(0, 3);
+    g.addEdge(1, 2);
+    g.addEdge(2, 4);
 
-        g.printGraph();
-        g.loadGraph();
+    g.printGraph();
+    g.loadGraph();
 
-        cout << "\nDFS: ";
-        g.DFS(1);
+    cout << "\nDFS: ";
+    g.DFS(1);
 
-        Graph g2(5);
-        g2.addEdge(0, 1);
-        g2.addEdge(0, 2);
-        g2.addEdge(0, 3);
-        g2.addEdge(1, 2);
-        g2.addEdge(2, 4);
-        cout << "\nBFS: ";
-        g2.BFS(0);
+    Graph g2(5);
+    g2.addEdge(0, 1);
+    g2.addEdge(0, 2);
+    g2.addEdge(0, 3);
+    g2.addEdge(1, 2);
+    g2.addEdge(2, 4);
+    cout << "\nBFS: ";
+    g2.BFS(0);
 
-        return 0;
-    }
+    return 0;
+}
